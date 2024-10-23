@@ -7,8 +7,8 @@ class RegistrationsController < ApplicationController
     user = User.new(user_params)
 
     if user.save
-      # redirect to dashboard later
-      redirect_to home_path
+      start_new_session_for(user)
+      redirect_to uploads_path
     else
       render :new, status: :unprocessable_entity
     end

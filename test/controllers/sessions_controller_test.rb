@@ -15,7 +15,7 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
       }
     end
 
-    assert_redirected_to root_path
+    assert_redirected_to uploads_path
   end
 
   test "#create - password does match" do

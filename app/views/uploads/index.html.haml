@@ -1,0 +1,11 @@
+.pt-24.mx-8
+  %h1.text-balance.text-5xl.font-semibold.tracking-tight.text-gray-900
+    Dashboard
+
+  %h2.text-balance.text-3xl.font-semibold.tracking-tight.text-gray-900.mt-4
+    Upload a new file
+
+  = form_with model: Upload.new do |form|
+    .flex.space-x-12.mt-8
+      = form.file_field :file, accept: "application/zip", class: "w-full text-gray-500 font-medium text-lg bg-gray-100 file:cursor-pointer cursor-pointer file:border-0 file:py-3 file:px-4 file:mr-4 file:bg-indigo-600 file:hover:bg-indigo-500 file:text-white rounded"
+      = form.submit "Upload!", class: "rounded-md bg-indigo-600 px-16 py-2 font-medium text-white text-lg shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"

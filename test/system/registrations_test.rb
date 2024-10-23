@@ -13,7 +13,7 @@ class RegistrationsTest < ApplicationSystemTestCase
     assert_difference "User.count", +1 do
       click_on "Submit"
 
-      assert_text "The next generation of file uploaders is here"
+      assert_text "Dashboard"
     end
   end
 end

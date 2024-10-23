@@ -1,7 +1,6 @@
 require "application_system_test_case"
 
 class SessionsTest < ApplicationSystemTestCase
-
   test "user can sign in" do
     visit root_path
 
@@ -13,7 +12,7 @@ class SessionsTest < ApplicationSystemTestCase
     assert_difference "Session.count", +1 do
       click_on "Submit"
 
-      assert_text "The next generation of file uploaders is here"
+      assert_text "Dashboard"
     end
   end
 end

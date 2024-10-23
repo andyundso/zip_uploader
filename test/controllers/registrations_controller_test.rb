@@ -1,7 +1,6 @@
 require "test_helper"
 
 class RegistrationsControllerTest < ActionDispatch::IntegrationTest
-
   test "#new" do
     get new_registration_path
 
@@ -17,7 +16,7 @@ class RegistrationsControllerTest < ActionDispatch::IntegrationTest
       }
     end
 
-    assert_redirected_to home_path
+    assert_redirected_to uploads_path
   end
 
   test "#create - password confirmation does not match" do
