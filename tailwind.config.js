@@ -9,5 +9,8 @@ module.exports = {
     fontFamily: {
       'sans': 'Helvetica, Arial, sans-serif',
     }
-  }
+  },
+  plugins: [
+    require('@tailwindcss/forms'),
+  ],
 }

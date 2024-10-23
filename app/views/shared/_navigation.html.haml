@@ -6,8 +6,5 @@
         %img.h-8.w-auto{src: "https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600"}
 
     .flex.flex-1.justify-end.gap-x-12
-      %p.text-sm.font-semibold.leading-6.text-gray-900
-        Sign in
-
-      %p.text-sm.font-semibold.leading-6.text-gray-900
-        Register
+      = link_to "Sign In", new_session_path, class: "text-sm font-semibold leading-6 text-gray-900"
+      = link_to "Register", new_registration_path, class: "text-sm font-semibold leading-6 text-gray-900"
