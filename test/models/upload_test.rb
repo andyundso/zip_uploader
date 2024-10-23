@@ -1,17 +1,20 @@
 require "test_helper"
 
-class ZipAnalyzerTest < ActiveSupport::TestCase
+class UploadTest < ActiveSupport::TestCase
+  include ActiveJob::TestHelper
   include ActionDispatch::TestProcess::FixtureFile
 
-  test "it analyzes a ZIP file" do
-    upload = Upload.create!(
+  test "analyzes ZIP after creation" do
+    upload = Upload.new(
       file: fixture_file_upload("example.zip", "application/zip"),
       user: users(:one)
     )
 
     assert_difference "Binary.count", 3 do
       assert_difference "Folder.count", 2 do
-        ZipAnalyzer.new(upload:).call
+        perform_enqueued_jobs do
+          upload.save!
+        end
       end
     end
 

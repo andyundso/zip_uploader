@@ -8,6 +8,7 @@ class UploadsController < ApplicationController
   end
 
   def index
+    @uploads = Current.user.uploads.order(created_at: :desc)
   end
 
   private

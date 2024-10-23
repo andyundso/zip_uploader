@@ -1,23 +1,15 @@
-class ZipAnalyzer
-  def initialize(upload:)
-    @upload = upload
-  end
+require "zip"
 
-  def call
-    # normally you want to wrap a transaction around this piece
-    # but then we run into this error
-    # https://github.com/rails/rails/issues/38185#issuecomment-572848893
+class ZipAnalyzerJob < ApplicationJob
+  def perform(upload_id)
+    @upload = Upload.find(upload_id)
 
     upload.file.open do |file|
       Zip::File.open(file) do |zip_file|
         ApplicationRecord.transaction do
           zip_file.each do |entry|
             split_name = entry.name.split("/")
-            parent_resource = if split_name.length == 1
-                                upload
-            else
-                                Folder.find_by!(name: split_name[-2])
-            end
+            parent_resource = get_parent_resource(split_name)
 
             if entry.ftype == :directory
               Folder.create!(name: split_name.last, parent_resource:)
@@ -37,9 +29,18 @@ class ZipAnalyzer
     end
 
     upload.file.purge
+    upload.update!(analyzed_at: Time.zone.now)
   end
 
   private
+
+  def get_parent_resource(split_name)
+    if split_name.length == 1
+      upload
+    else
+      Folder.find_by!(name: split_name[-2])
+    end
+  end
 
   def attach_binary_from_zip(zip_entry_stream:, db_file:, file_name:)
     tempfile = Tempfile.new(binmode: true)
