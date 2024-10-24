@@ -4,6 +4,8 @@ require "rails/test_help"
 
 module ActiveSupport
   class TestCase
+    include FactoryBot::Syntax::Methods
+
     # Run tests in parallel with specified workers
     parallelize(workers: :number_of_processors)
 
@@ -24,3 +26,10 @@ module ActionDispatch
     end
   end
 end
+
+FactoryBot::SyntaxRunner.class_eval do
+  include ActiveSupport::Testing::FileFixtures
+  include ActionDispatch::TestProcess::FixtureFile
+end
+
+FactoryBot::SyntaxRunner.file_fixture_path = ActiveSupport::TestCase.file_fixture_path

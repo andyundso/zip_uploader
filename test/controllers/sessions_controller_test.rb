@@ -8,9 +8,11 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "#create - adds new session" do
+    user = create(:user)
+
     assert_difference "Session.count", +1 do
       post session_path, params: {
-        email_address: "one@example.com",
+        email_address: user.email_address,
         password: "password"
       }
     end

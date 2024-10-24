@@ -6,7 +6,7 @@ class SessionsTest < ApplicationSystemTestCase
 
     click_on "Sign In"
 
-    fill_in "Email address", with: users(:one).email_address
+    fill_in "Email address", with: create(:user).email_address
     fill_in "Password", with: "password"
 
     assert_difference "Session.count", +1 do

@@ -2,13 +2,9 @@ require "test_helper"
 
 class UploadTest < ActiveSupport::TestCase
   include ActiveJob::TestHelper
-  include ActionDispatch::TestProcess::FixtureFile
 
   test "analyzes ZIP after creation" do
-    upload = Upload.new(
-      file: fixture_file_upload("example.zip", "application/zip"),
-      user: users(:one)
-    )
+    upload = build(:upload)
 
     assert_difference "Binary.count", 3 do
       assert_difference "Folder.count", 2 do

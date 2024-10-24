@@ -2,7 +2,8 @@ require "test_helper"
 
 class UploadsControllerTest < ActionDispatch::IntegrationTest
   test "#create" do
-    sign_in(users(:one))
+    user = create(:user)
+    sign_in(user)
 
     assert_difference "Upload.count", +1 do
       post uploads_path, params: {
@@ -17,19 +18,14 @@ class UploadsControllerTest < ActionDispatch::IntegrationTest
 
     upload = Upload.last
     assert upload.file.attached?
-    assert_equal users(:one), upload.user
+    assert_equal user, upload.user
   end
 
   test "#show" do
-    sign_in(users(:one))
-
-    upload = Upload.create!(
-      file: fixture_file_upload("example.zip", "application/zip"),
-      user: users(:one)
-    )
-
+    upload = create(:upload)
     perform_enqueued_jobs
 
+    sign_in(upload.user)
     get upload_path(upload)
 
     assert_response :success
