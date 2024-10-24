@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resource :registration
 
   resources :folders, only: %i[show]
-  resources :uploads, only: %i[create index show]
+  resources :uploads, only: %i[create index]
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

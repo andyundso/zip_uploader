@@ -1,8 +1,7 @@
 class Upload < ApplicationRecord
   belongs_to :user
 
-  has_many :binaries, as: :parent_resource, dependent: :destroy
-  has_many :folders, as: :parent_resource, dependent: :destroy
+  has_one :root_folder, class_name: "Folder", dependent: :destroy
 
   has_one_attached :file
 

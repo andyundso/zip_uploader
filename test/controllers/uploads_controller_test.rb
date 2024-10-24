@@ -20,14 +20,4 @@ class UploadsControllerTest < ActionDispatch::IntegrationTest
     assert upload.file.attached?
     assert_equal user, upload.user
   end
-
-  test "#show" do
-    upload = create(:upload)
-    perform_enqueued_jobs
-
-    sign_in(upload.user)
-    get upload_path(upload)
-
-    assert_response :success
-  end
 end

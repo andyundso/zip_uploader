@@ -11,10 +11,6 @@ class UploadsController < ApplicationController
     @uploads = Current.user.uploads.order(created_at: :desc)
   end
 
-  def show
-    @upload = Current.user.uploads.find(params[:id])
-  end
-
   private
 
   def upload_params

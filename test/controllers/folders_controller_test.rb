@@ -6,7 +6,7 @@ class FoldersControllerTest < ActionDispatch::IntegrationTest
     perform_enqueued_jobs
 
     sign_in(upload.user)
-    get folder_path(upload.folders.first)
+    get folder_path(upload.root_folder)
 
     assert_response :success
   end

@@ -9,7 +9,7 @@
       %span.ml-1.font-bold.text-lg Back
 
   .grid.grid-cols-4.gap-4
-    - @folder.folders.each do |folder|
+    - @folder.children.each do |folder|
       = render folder
 
     - @folder.binaries.each do |binary|

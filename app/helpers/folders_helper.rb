@@ -1,9 +1,9 @@
 module FoldersHelper
   def back_to_path(folder)
-    if folder.parent_resource_type == "Upload"
-      upload_path(folder.parent_resource)
+    if folder.upload_id
+      uploads_path
     else
-      folder_path(folder.parent_resource)
+      folder_path(folder.parent)
     end
   end
 end
