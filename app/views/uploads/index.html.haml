@@ -40,3 +40,9 @@
             %td.px-4.py-4.text-sm.text-gray-500
               - if upload.analyzed_at.nil?
                 Analysis pending
+
+            %td
+              - if upload.analyzed_at.present?
+                = link_to upload_path(upload) do
+                  .size-6.hover:text-indigo-600
+                    = render "icons/eye"

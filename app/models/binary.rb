@@ -1,5 +1,6 @@
 class Binary < ApplicationRecord
   belongs_to :parent_resource, polymorphic: true
+  belongs_to :user
 
   has_one_attached :file
 end

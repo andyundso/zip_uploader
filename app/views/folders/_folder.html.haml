@@ -1,0 +1,7 @@
+= link_to folder_path(folder) do
+  .h-full.flex.flex-col.gap-4.items-center.border.rounded-lg.p-4.border-gray-500.hover:border-indigo-500
+    .size-24.text-gray-500.hover:text-indigo-500
+      = render "icons/folder"
+
+    %p.text-medium.font-semibold.leading-6.text-gray-900.w-full.break-words.hover:text-indigo-500.text-center
+      = folder.name

@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   resources :passwords, param: :token
   resource :registration
 
-  resources :uploads, only: %i[create index]
+  resources :folders, only: %i[show]
+  resources :uploads, only: %i[create index show]
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

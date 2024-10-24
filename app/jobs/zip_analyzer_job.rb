@@ -12,9 +12,9 @@ class ZipAnalyzerJob < ApplicationJob
             parent_resource = get_parent_resource(split_name)
 
             if entry.ftype == :directory
-              Folder.create!(name: split_name.last, parent_resource:)
+              Folder.create!(name: split_name.last, parent_resource:, user: upload.user)
             else
-              file = Binary.create!(name: split_name.last, parent_resource:)
+              file = Binary.create!(name: split_name.last, parent_resource:, user: upload.user)
 
               # ActiveStorage wants a rewindable IO, so we have to write the file to Tempfile first
               attach_binary_from_zip(
