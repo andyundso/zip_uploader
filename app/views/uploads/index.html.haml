@@ -32,4 +32,5 @@
 
       %tbody.divide-y.divide-gray-200
         - @uploads.each do |upload|
-          = render "row", upload:
+          %tr{id: dom_id(upload) }
+            = render "row", upload:
