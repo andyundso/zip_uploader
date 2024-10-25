@@ -6,7 +6,9 @@ class Upload < ApplicationRecord
   has_one_attached :file
 
   before_validation -> { self.file_name = file.blob.filename if file_name.blank? }
+
   after_create_commit -> { ZipAnalyzerJob.perform_later(self.id) }
+  after_update_commit -> { broadcast_update_later_to(self.user, partial: "uploads/row") }
 
   scope :analysis_pending, -> { where(analyzed_at: nil) }
 

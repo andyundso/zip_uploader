@@ -1,3 +1,5 @@
+= turbo_stream_from Current.user
+
 .pt-24.mx-8
   %h1.text-balance.text-5xl.font-semibold.tracking-tight.text-gray-900
     Dashboard
@@ -30,19 +32,4 @@
 
       %tbody.divide-y.divide-gray-200
         - @uploads.each do |upload|
-          %tr
-            %td.py-4.pl-4.pr-3.text-sm.font-medium.text-gray-900
-              = upload.file_name
-
-            %td.px-4.py-4.text-sm.text-gray-500
-              = l(upload.created_at, format: :short)
-
-            %td.px-4.py-4.text-sm.text-gray-500
-              - if upload.analyzed_at.nil?
-                Analysis pending
-
-            %td
-              - if upload.analyzed_at.present?
-                = link_to folder_path(upload.root_folder) do
-                  .size-6.hover:text-indigo-600
-                    = render "icons/eye"
+          = render "row", upload:

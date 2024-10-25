@@ -1,0 +1,16 @@
+%tr{id: dom_id(upload) }
+  %td.py-4.pl-4.pr-3.text-sm.font-medium.text-gray-900
+    = upload.file_name
+
+  %td.px-4.py-4.text-sm.text-gray-500
+    = l(upload.created_at, format: :short)
+
+  %td.px-4.py-4.text-sm.text-gray-500
+    - if upload.analyzed_at.nil?
+      Analysis pending
+
+  %td
+    - if upload.analyzed_at.present?
+      = link_to folder_path(upload.root_folder) do
+        .size-6.hover:text-indigo-600
+          = render "icons/eye"
