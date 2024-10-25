@@ -20,6 +20,8 @@
           = link_to "Version 1 (Memory Profiler)", download_api_v1_folder_path(@folder, pp: "profile-memory"), class: "block px-4 py-2 text-gray-700 hover:text-indigo-500", data: { turbo: "false" }, target: "_blank"
           = link_to "Version 2", download_api_v2_folder_path(@folder), class: "block px-4 py-2 text-gray-700 hover:text-indigo-500", data: { turbo: "false" }, target: "_blank"
           = link_to "Version 2 (Memory Profiler)", download_api_v2_folder_path(@folder, pp: "profile-memory"), class: "block px-4 py-2 text-gray-700 hover:text-indigo-500", data: { turbo: "false" }, target: "_blank"
+          = link_to "Version 3", download_api_v3_folder_path(@folder), class: "block px-4 py-2 text-gray-700 hover:text-indigo-500", data: { turbo: "false" }
+          = link_to "Version 3 (Memory Profiler)", download_api_v3_folder_path(@folder, pp: "profile-memory"), class: "block px-4 py-2 text-gray-700 hover:text-indigo-500", data: { turbo: "false" }, target: "_blank"
 
   .grid.grid-cols-4.gap-4
     - @folder.children.each do |folder|

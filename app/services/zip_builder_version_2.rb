@@ -8,11 +8,10 @@ class ZipBuilderVersion2
   def call
     output_file = Tempfile.new(binmode: true)
 
-    buffer = Zip::OutputStream.write_buffer do |out|
+    Zip::OutputStream.write_buffer(output_file) do |out|
       write_files_and_folders(path_inside_zip: "", output: out, current_folder: starting_point)
     end
 
-    output_file.write(buffer.string)
     output_file.path
   end
 
