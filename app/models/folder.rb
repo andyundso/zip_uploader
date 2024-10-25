@@ -6,6 +6,12 @@ class Folder < ApplicationRecord
 
   validate :needs_either_ancestry_or_upload
 
+  scope :accessible_for, ->(user) {
+    where(
+      root_id: Folder.roots.where(upload_id: user.uploads)
+    ).or(where(upload_id: user.uploads))
+  }
+
   private
 
   def needs_either_ancestry_or_upload

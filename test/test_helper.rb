@@ -12,7 +12,22 @@ module ActiveSupport
     # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
     fixtures :all
 
-    # Add more helper methods to be used by all tests here...
+    def expect_complete_zip_file(zip_file_entries)
+      assert_equal "lorem_ipsum_2/", zip_file_entries.first.name
+      assert_equal :directory, zip_file_entries.first.ftype
+
+      assert_equal "lorem_ipsum_2/lorem_ipsum_2.jpg", zip_file_entries.second.name
+      assert_equal :file, zip_file_entries.second.ftype
+
+      assert_equal "lorem_ipsum_1.jpg", zip_file_entries.third.name
+      assert_equal :file, zip_file_entries.third.ftype
+
+      assert_equal "lorem_ipsum_3/", zip_file_entries.fourth.name
+      assert_equal :directory, zip_file_entries.fourth.ftype
+
+      assert_equal "lorem_ipsum_3/lorem_ipsum_3.jpg", zip_file_entries.fifth.name
+      assert_equal :file, zip_file_entries.fifth.ftype
+    end
   end
 end
 

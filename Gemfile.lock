@@ -261,7 +261,7 @@ GEM
     ruby_parser (3.21.1)
       racc (~> 1.5)
       sexp_processor (~> 4.16)
-    rubyzip (2.3.2)
+    rubyzip (3.0.0.alpha)
     securerandom (0.3.1)
     selenium-webdriver (4.25.0)
       base64 (~> 0.2)
@@ -336,7 +336,7 @@ DEPENDENCIES
   puma (>= 5.0)
   rails (~> 8.0.0.rc1)
   rubocop-rails-omakase
-  rubyzip
+  rubyzip (= 3.0.0.alpha)
   selenium-webdriver
   solid_cable
   solid_cache
