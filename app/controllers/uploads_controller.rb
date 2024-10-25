@@ -11,6 +11,13 @@ class UploadsController < ApplicationController
     @uploads = Current.user.uploads.order(created_at: :desc)
   end
 
+  def destroy
+    upload = Current.user.uploads.find(params[:id])
+    upload.destroy!
+
+    redirect_to uploads_path
+  end
+
   private
 
   def upload_params

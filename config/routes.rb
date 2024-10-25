@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resource :registration
 
   resources :folders, only: %i[show]
-  resources :uploads, only: %i[create index]
+  resources :uploads, only: %i[create destroy index]
 
   namespace :api do
     namespace :v1 do
