@@ -24,6 +24,12 @@ Rails.application.routes.draw do
         get "download", on: :member
       end
     end
+
+    namespace :v4 do
+      resources :folders, only: %i[] do
+        get "download", on: :member
+      end
+    end
   end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

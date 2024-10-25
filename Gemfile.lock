@@ -322,6 +322,7 @@ GEM
     xpath (3.2.0)
       nokogiri (~> 1.8)
     zeitwerk (2.7.1)
+    zip_kit (6.3.1)
 
 PLATFORMS
   ruby
@@ -354,6 +355,7 @@ DEPENDENCIES
   turbo-rails
   tzinfo-data
   web-console
+  zip_kit
 
 BUNDLED WITH
    2.6.0.dev
