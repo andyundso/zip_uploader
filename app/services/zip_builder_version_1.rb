@@ -13,6 +13,7 @@ class ZipBuilderVersion1
     create_files_and_folders(resource: @starting_point, path: @input_dir)
 
     # taken from the README of rubyzip
+    Rails.logger.info "Compressing archive"
     entries = Dir.entries(@input_dir) - %w[. ..]
     ::Zip::File.open(output_file, create: true) do |zipfile|
       write_entries(entries, "", zipfile)
@@ -27,13 +28,21 @@ class ZipBuilderVersion1
 
   def create_files_and_folders(resource:, path:)
     resource.children.each do |folder|
+      Rails.logger.info "Writing folder #{folder.name} to #{path}"
+
       folder_path = "#{path}/#{folder.name}"
       Dir.mkdir(folder_path)
       create_files_and_folders(resource: folder, path: folder_path)
     end
 
     resource.binaries.each do |binary|
-      File.write("#{path}/#{binary.file.blob.filename}", binary.file.download, binmode: true)
+      Rails.logger.info "Writing binary #{binary.name} to #{path}"
+
+      File.open("#{path}/#{binary.file.blob.filename}", "wb") do |file|
+        binary.file.download do |chunk|
+          file.write(chunk)
+        end
+      end
     end
   end
 
