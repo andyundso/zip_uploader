@@ -5,6 +5,11 @@
         %span.sr-only ZIP Uploader
         %img.h-8.w-auto{src: "https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600"}
 
-    .flex.flex-1.justify-end.gap-x-12
-      = link_to "Sign In", new_session_path, class: "text-sm font-semibold leading-6 text-gray-900"
-      = link_to "Register", new_registration_path, class: "text-sm font-semibold leading-6 text-gray-900"
+    - if Current.user.present?
+      = link_to "Your Uploads", uploads_path, class: "font-semibold leading-6 text-gray-900 hover:text-indigo-500"
+      = link_to "Sign out", session_path(Current.session), class: "text-sm font-semibold leading-6 text-gray-900  hover:text-indigo-500", data: { "turbo-method": "DELETE"}
+
+    - else
+      .flex.flex-1.justify-end.gap-x-12
+        = link_to "Sign In", new_session_path, class: "text-sm font-semibold leading-6 text-gray-900  hover:text-indigo-500"
+        = link_to "Register", new_registration_path, class: "text-sm font-semibold leading-6 text-gray-900 hover:text-indigo-500"

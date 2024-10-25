@@ -30,4 +30,15 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to new_session_path
   end
+
+  test "#destroy" do
+    sign_in(create(:user))
+
+    assert_difference "Session.count", -1 do
+      delete session_path(Session.last)
+    end
+
+    assert_response :redirect
+    assert_redirected_to new_session_path
+  end
 end
