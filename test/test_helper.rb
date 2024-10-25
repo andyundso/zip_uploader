@@ -13,20 +13,21 @@ module ActiveSupport
     fixtures :all
 
     def expect_complete_zip_file(zip_file_entries)
-      assert_equal "lorem_ipsum_2/", zip_file_entries.first.name
-      assert_equal :directory, zip_file_entries.first.ftype
+      # depending on the ZIP implementation, the order of elements is different
+      lorem_ipsum_1_file = zip_file_entries.find { |e| e.name == "lorem_ipsum_1.jpg" }
+      assert_equal :file, lorem_ipsum_1_file.ftype
 
-      assert_equal "lorem_ipsum_2/lorem_ipsum_2.jpg", zip_file_entries.second.name
-      assert_equal :file, zip_file_entries.second.ftype
+      lorem_ipsum_2_folder = zip_file_entries.find { |e| e.name == "lorem_ipsum_2/" }
+      assert_equal :directory, lorem_ipsum_2_folder.ftype
 
-      assert_equal "lorem_ipsum_1.jpg", zip_file_entries.third.name
-      assert_equal :file, zip_file_entries.third.ftype
+      lorem_ipsum_2_file = zip_file_entries.find { |e| e.name == "lorem_ipsum_2/lorem_ipsum_2.jpg" }
+      assert_equal :file, lorem_ipsum_2_file.ftype
 
-      assert_equal "lorem_ipsum_3/", zip_file_entries.fourth.name
-      assert_equal :directory, zip_file_entries.fourth.ftype
+      lorem_ipsum_3_folder = zip_file_entries.find { |e| e.name == "lorem_ipsum_3/" }
+      assert_equal :directory, lorem_ipsum_3_folder.ftype
 
-      assert_equal "lorem_ipsum_3/lorem_ipsum_3.jpg", zip_file_entries.fifth.name
-      assert_equal :file, zip_file_entries.fifth.ftype
+      lorem_ipsum_3_file = zip_file_entries.find { |e| e.name == "lorem_ipsum_3/lorem_ipsum_3.jpg" }
+      assert_equal :file, lorem_ipsum_3_file.ftype
     end
   end
 end
