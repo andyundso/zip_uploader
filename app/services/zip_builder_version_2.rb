@@ -34,6 +34,7 @@ class ZipBuilderVersion2
     current_folder.binaries.each do |binary|
       output.put_next_entry("#{path_inside_zip}#{binary.name}")
 
+      Rails.logger.info "Writing #{binary.name} at #{path_inside_zip}."
       binary.file.download do |chunk|
         output.write(chunk)
       end
