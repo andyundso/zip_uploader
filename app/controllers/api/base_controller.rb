@@ -7,7 +7,7 @@ module Api
     end
 
     def create_session_by_token
-      user = User.find_by(token: params[:token])
+      user = User.find_by(api_token: params[:api_token])
       return unless user
 
       start_new_session_for(user)

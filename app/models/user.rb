@@ -6,5 +6,7 @@ class User < ApplicationRecord
   has_many :folders, dependent: :destroy
   has_many :binaries, dependent: :destroy
 
+  has_secure_token :api_token
+
   normalizes :email_address, with: ->(e) { e.strip.downcase }
 end
