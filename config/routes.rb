@@ -8,6 +8,10 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
+      resources :binaries, only: %i[] do
+        get "download", on: :member
+      end
+
       resources :folders, only: %i[] do
         get "download", on: :member
       end

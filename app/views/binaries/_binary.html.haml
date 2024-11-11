@@ -1,6 +1,7 @@
-.flex.flex-col.gap-4.items-center.border.rounded-lg.p-4.border-gray-500
-  .size-24.text-gray-500
-    = render "icons/document"
+= link_to download_api_v1_binary_path(binary), data: { turbo: "false" } do
+  .flex.flex-col.gap-4.items-center.border.rounded-lg.p-4.border-gray-500.hover:border-indigo-500
+    .size-24.text-gray-500.hover:text-indigo-500
+      = render "icons/document"
 
-  %p.text-medium.font-semibold.leading-6.break-words.w-full.text-gray-900.text-center
-    = binary.name
+    %p.text-medium.font-semibold.leading-6.break-words.w-full.text-gray-900.text-center.hover:text-indigo-500.text-center
+      = binary.name
