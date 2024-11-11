@@ -17,13 +17,9 @@
 
         .hidden.bg-white.transition.transform.origin-top-right.absolute.right-0.border.border-gray-400.rounded.mt-2.divide-y.divide-gray-100{data: { "dropdown-target": "menu", transition: { enter: {from: "opacity-0 scale-95", to: "opacity-100 scale-100"}, leave: { from: "opacity-100 scale-100", to: "opacity-0 scale-95"}} }}
           = link_to "Version 1", download_api_v1_folder_path(@folder), class: "block px-4 py-2 text-gray-700 hover:text-indigo-500", data: { turbo: "false" }, target: "_blank"
-          = link_to "Version 1 (Memory Profiler)", download_api_v1_folder_path(@folder, pp: "profile-memory"), class: "block px-4 py-2 text-gray-700 hover:text-indigo-500", data: { turbo: "false" }, target: "_blank"
           = link_to "Version 2", download_api_v2_folder_path(@folder), class: "block px-4 py-2 text-gray-700 hover:text-indigo-500", data: { turbo: "false" }, target: "_blank"
-          = link_to "Version 2 (Memory Profiler)", download_api_v2_folder_path(@folder, pp: "profile-memory"), class: "block px-4 py-2 text-gray-700 hover:text-indigo-500", data: { turbo: "false" }, target: "_blank"
           = link_to "Version 3", download_api_v3_folder_path(@folder), class: "block px-4 py-2 text-gray-700 hover:text-indigo-500", data: { turbo: "false" }
-          = link_to "Version 3 (Memory Profiler)", download_api_v3_folder_path(@folder, pp: "profile-memory"), class: "block px-4 py-2 text-gray-700 hover:text-indigo-500", data: { turbo: "false" }, target: "_blank"
           = link_to "Version 4", download_api_v4_folder_path(@folder), class: "block px-4 py-2 text-gray-700 hover:text-indigo-500", data: { turbo: "false" }
-          = link_to "Version 4 (Memory Profiler)", download_api_v4_folder_path(@folder, pp: "profile-memory"), class: "block px-4 py-2 text-gray-700 hover:text-indigo-500", data: { turbo: "false" }, target: "_blank"
 
   .grid.grid-cols-4.gap-4
     - @folder.children.each do |folder|

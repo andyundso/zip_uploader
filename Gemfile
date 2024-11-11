@@ -44,10 +44,6 @@ gem "factory_bot_rails"
 # Organize ActiveRecord models into a tree
 gem "ancestry"
 
-# See performance information
-gem "rack-mini-profiler"
-gem "memory_profiler"
-
 # Efficient ZIP streaming
 gem "zip_kit"
 
