@@ -25,7 +25,8 @@ FROM ruby:3.4.1-alpine AS app
 
 ENV RAILS_ENV="production" \
     BUNDLE_PATH="/usr/local/bundle" \
-    BUNDLE_WITHOUT="development test"
+    BUNDLE_WITHOUT="development test" \
+    FREETDSCONF=/work/freetds.conf
 
 WORKDIR /work
 

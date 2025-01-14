@@ -10,4 +10,7 @@ sleep 5
 
 bundle exec rails db:migrate || bundle exec rails db:setup
 
+touch /tmp/debug.log
+tail -f /tmp/debug.log &
+
 bundle exec puma
