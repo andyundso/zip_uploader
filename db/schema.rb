@@ -43,7 +43,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_10_29_171540) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "folder_id", null: false
+    t.bigint "folder_id", null: false
     t.index ["folder_id"], name: "index_binaries_on_folder_id"
   end
 
@@ -52,14 +52,13 @@ ActiveRecord::Schema[8.0].define(version: 2024_10_29_171540) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "ancestry"
-    t.virtual "root_id", type: :integer, as: "CASE WHEN ancestry = '/' THEN NULL ELSE CAST(SUBSTR(ancestry, 2, INSTR(SUBSTR(ancestry, 2), '/') - 1) AS INTEGER) END", stored: false
-    t.integer "upload_id"
+    t.bigint "upload_id"
     t.index ["ancestry"], name: "index_folders_on_ancestry"
     t.index ["upload_id"], name: "index_folders_on_upload_id"
   end
 
   create_table "sessions", force: :cascade do |t|
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.string "ip_address"
     t.string "user_agent"
     t.datetime "created_at", null: false
@@ -68,7 +67,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_10_29_171540) do
   end
 
   create_table "uploads", force: :cascade do |t|
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "analyzed_at"
