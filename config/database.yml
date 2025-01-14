@@ -12,3 +12,8 @@ development:
 test:
   <<: *default
   database: zip_uploader_test
+
+production:
+  <<: *default
+  database: zip_uploader_production
+  host: sql
