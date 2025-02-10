@@ -270,7 +270,7 @@ GEM
     ruby_parser (3.21.1)
       racc (~> 1.5)
       sexp_processor (~> 4.16)
-    rubyzip (3.0.0.alpha)
+    rubyzip (3.0.0.rc2)
     securerandom (0.3.2)
     sexp_processor (4.17.2)
     solid_cable (3.0.2)
@@ -339,7 +339,7 @@ DEPENDENCIES
   puma (>= 5.0)
   rails (~> 8.0)
   rubocop-rails-omakase
-  rubyzip (= 3.0.0.alpha)
+  rubyzip (= 3.0.0.rc2)
   solid_cable
   solid_cache
   solid_queue

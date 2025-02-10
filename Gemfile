@@ -36,7 +36,7 @@ gem "haml-rails", "~> 2.0"
 gem "html2haml"
 
 # Read and write ZIP files
-gem "rubyzip", "3.0.0.alpha"
+gem "rubyzip", "3.0.0.rc2"
 
 # Replace Rails fixtures with factories
 gem "factory_bot_rails"
